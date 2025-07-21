@@ -267,7 +267,7 @@ mouse_slow: mouse_slow {
             compatible = "zmk,behavior-macro";
             label = "GERMAN_AE";
             #binding-cells = <0>;
-            bindings = <uckm>, <&kp A>;
+            bindings = <&uckm>, <&kp A>;
         };
         
         de_oe: de_oe {
@@ -281,7 +281,7 @@ mouse_slow: mouse_slow {
             compatible = "zmk,behavior-macro";
             label = "GERMAN_UE";
             #binding-cells = <0>;
-            bindings = <uckm>, <&kp U>;
+            bindings = <&uckm>, <&kp U>;
         };
         
         de_ss: de_ss {
@@ -436,7 +436,7 @@ mouse_slow: mouse_slow {
             sensor-bindings = <&rgb_encoder>;
         };
     };
-    / {
+
     conditional_layers {
         compatible = "zmk,conditional-layers";
         mac_mods {
@@ -447,6 +447,5 @@ mouse_slow: mouse_slow {
             if-layers = <BT_SEL 1>;  // Profile 1 for PC
             then-layer = <PC>;
         };
-    };
     };
 };
