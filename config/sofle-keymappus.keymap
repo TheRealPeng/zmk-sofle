@@ -156,17 +156,47 @@ mouse_slow: mouse_slow {
         };
 
         // Faster timing for index fingers (stronger)
-        hml_index: hml_index {
+        hmr_index: hml_index {
            compatible = "zmk,behavior-hold-tap";
            tapping-term-ms = <200>;  // Faster for T
-           // ... rest of config
+          #binding-cells = <2>;
+            bindings = <&kp>, <&kp>;
+            flavor = "balanced";
+            tapping-term-ms = <280>;
+            quick-tap-ms = <175>;
+            require-prior-idle-ms = <150>;
+            // Right hand mods only activate with left hand keys
+            hold-trigger-key-positions = <
+                0 1 2 3 4 5           // Top row: left side
+                13 14 15 16 17 18     // Home row: left side
+                26 27 28 29 30 31     // Bottom row: left side
+                39 40 41 42 43 44     // Number row: left side
+                52                    // scrollwheel: left side
+                53 54 55 56 57        // Thumb row: left side
+            >;
+            hold-trigger-on-release;
         };
 
         // Standard timing for pinkies
-        hml_pinky: hml_pinky {
+        hmr_pinky: hml_pinky {
            compatible = "zmk,behavior-hold-tap";
            tapping-term-ms = <300>;  // Slower for R
-           // ... rest of config
+           #binding-cells = <2>;
+            bindings = <&kp>, <&kp>;
+            flavor = "balanced";
+            tapping-term-ms = <280>;
+            quick-tap-ms = <175>;
+            require-prior-idle-ms = <150>;
+            // Right hand mods only activate with left hand keys
+            hold-trigger-key-positions = <
+                0 1 2 3 4 5           // Top row: left side
+                13 14 15 16 17 18     // Home row: left side
+                26 27 28 29 30 31     // Bottom row: left side
+                39 40 41 42 43 44     // Number row: left side
+                52                    // scrollwheel: left side
+                53 54 55 56 57        // Thumb row: left side
+            >;
+            hold-trigger-on-release;
         };
         
         // Layer tap for thumb keys
