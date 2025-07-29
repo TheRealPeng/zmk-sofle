@@ -11,8 +11,6 @@
 #include <dt-bindings/zmk/rgb.h>
 #include <zephyr/dt-bindings/input/input-event-codes.h>
 
-#define ------- &trans
-
 // Layer definitions
 #define BASE 0
 #define PC   1
@@ -34,7 +32,7 @@
 // Home row mods for PC
 #define PHRM_T &hml LCTRL T
 #define PHRM_S &hml LGUI S
-#define PHRM_I &hmr GUI I
+#define PHRM_I &hmr RGUI I
 #define PHRM_A &hmr RCTRL A
 
 / {
@@ -46,35 +44,33 @@
         codes = <INPUT_REL_WHEEL INPUT_REL_HWHEEL>;
         track-remainders;
     };
-};
 
-&mmv_input_listener {
-    input-processors = <&zip_xy_scaler 2 1>;
-};
+    &mmv_input_listener {
+        input-processors = <&zip_xy_scaler 2 1>;
+    };
 
-&msc_input_listener {
-    input-processors = <&zip_scroll_scaler 2 1>;
-};
+    &msc_input_listener {
+        input-processors = <&zip_scroll_scaler 2 1>;
+    };
 
-&msc {
-    acceleration-exponent = <0>;      // Linear scrolling
-    time-to-max-speed-ms = <0>;       // Instant max speed
-    delay-ms = <0>;                   // No delay
-};
+    &msc {
+        acceleration-exponent = <0>;      // Linear scrolling
+        time-to-max-speed-ms = <0>;       // Instant max speed
+        delay-ms = <0>;                   // No delay
+    };
 
-&mmv {
-    time-to-max-speed-ms = <300>;     // Mouse acceleration
-    acceleration-exponent = <2>;
-    delay-ms = <0>;
-};
+    &mmv {
+        time-to-max-speed-ms = <300>;     // Mouse acceleration
+        acceleration-exponent = <2>;
+        delay-ms = <0>;
+    };
 
-mouse_slow: mouse_slow {
-    compatible = "zmk,behavior-input-processor-scaler";
-    scale-multiplier = <1>;
-    scale-divisor = <3>;  // 3x slower for precision
-};
+    mouse_slow: mouse_slow {
+        compatible = "zmk,behavior-input-processor-scaler";
+        scale-multiplier = <1>;
+        scale-divisor = <3>;  // 3x slower for precision
+    };
 
-/ {
     /* 
      * Key position reference for Sofle standard:
      * ╭──────────────────────╮ ╭──────────────────────╮
@@ -279,7 +275,7 @@ mouse_slow: mouse_slow {
 
     &caps_word {
     continue-list = <UNDERSCORE MINUS BACKSPACE DELETE>;
-};
+    };
     
     // Macros for German characters
     macros {
@@ -324,7 +320,7 @@ mouse_slow: mouse_slow {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&macro_press>, <&kp LALT>,
-                       <&macro_tap>, <&kp KP_N0 &kp KP_N2 &kp KP_N2 &kp KP_N8>;
+                       <&macro_tap>, <&kp KP_N0>, <&kp KP_N2>, <&kp KP_N2>, <&kp KP_N8>,
                        <&macro_release>, <&kp LALT>;
         };
         
@@ -332,7 +328,7 @@ mouse_slow: mouse_slow {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&macro_press>, <&kp LALT>,
-                       <&macro_tap>, <&kp LALT>, <&kp KP_N0 &kp KP_N2 &kp KP_N4 &kp KP_N6>;
+                       <&macro_tap>, <&kp N0>, <&kp KP_N2>, <&kp KP_N4>, <&kp KP_N6>,
                        <&macro_release>, <&kp LALT>;
         };
         
@@ -340,7 +336,7 @@ mouse_slow: mouse_slow {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&macro_press>, <&kp LALT>,
-                       <&macro_tap>, <&kp LALT>, <&kp KP_N0 &kp KP_N2 &kp KP_N5 &kp KP_N2>;
+                       <&macro_tap>, <&kp KP_N0>, <&kp KP_N2>, <&kp KP_N5>, <&kp KP_N2>,
                        <&macro_release>, <&kp LALT>;
         };
         
@@ -348,10 +344,9 @@ mouse_slow: mouse_slow {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&macro_press>, <&kp LALT>,
-                       <&macro_tap>, <&kp LALT>, <&kp KP_N0 &kp KP_N2 &kp KP_N2 &kp KP_N3>;
+                       <&macro_tap>, <&kp KP_N0>, <&kp KP_N2>, <&kp KP_N2>, <&kp KP_N3>,
                        <&macro_release>, <&kp LALT>;
         };
-    };
     };
     
     keymap {
@@ -381,11 +376,11 @@ mouse_slow: mouse_slow {
         // PC layer - Hands Down Neu layout with home row mods
         pc_layer {
             bindings = <
-           -------   -------   -------    -------     -------   -------              -------               -------   -------   -------     -------    -------   -------
-           -------   -------   -------    -------     -------   -------              -------               -------   -------   -------     -------    -------   -------
-           -------   -------   PHRM_S     -------     PHRM_T    -------              -------               -------   PHRM_A    -------     PHRM_I     -------   -------
-           -------   -------   -------    -------     -------   -------              -------               -------   -------   -------     -------    -------   -------
--------                        &kp LGUI   &kp LCTRL   -------   -------   -------    -------     -------   -------   -------   &kp RALT   &kp RCTRL
+           &trans   &trans   &trans     &trans      &trans   &trans              &trans              &trans   &trans   &trans     &trans      &trans   &trans
+           &trans   &trans   &trans     &trans      &trans   &trans              &trans              &trans   &trans   &trans     &trans      &trans   &trans
+           &trans   &trans   PHRM_S     &trans      PHRM_T   &trans              &trans              &trans   PHRM_A   &trans     PHRM_I      &trans   &trans
+           &trans   &trans   &trans     &trans      &trans   &trans              &trans              &trans   &trans   &trans     &trans      &trans   &trans
+&trans                       &kp LGUI   &kp LCTRL   &trans   &trans   &trans     &trans     &trans   &trans   &trans   &kp RALT   &kp RCTRL
             >;
             label = "HD-PC";
             sensor-bindings = <&scroll_encoder>;
@@ -402,11 +397,11 @@ mouse_slow: mouse_slow {
          */
         symbol_layer {
             bindings = <
-           -------     -------     -------    -------    -------     -------                &mmv MOVE_UP                -------     -------     -------     -------     -------    -------
-           &kp GRAVE   &kp AT      &kp LBKT   &kp RBKT   &kp PIPE    &kp PRCNT              &mmv MOVE_DOWN              &kp AMPS    &kp STAR    &kp LPAR    &kp RPAR    &kp PLUS   &kp EQUAL
-           -------     &kp EXCL    &kp LBRC   &kp RBRC   &kp UNDER   &kp HASH               &mmv MOVE_LEFT              &kp DLLR    &kp MINUS   &kp SEMI    &kp COLON   &kp DQT    &kp APOS
-           -------     &kp CARET   &kp LT     &kp GT     &kp TILDE   &kp BSLH               &mmv MOVE_RIGHT             &kp QMARK   &kp FSLH    &kp COMMA   &kp DOT     &kp PIPE   -------
--------                            -------    -------    -------     -------      -------   &mkp LCLK         -------   -------     -------     -------     -------
+           &trans      &trans      &trans     &trans     &trans      &trans                 &mmv MOVE_UP                 &trans      &trans      &trans      &trans      &trans     &trans
+           &kp GRAVE   &kp AT      &kp LBKT   &kp RBKT   &kp PIPE    &kp PRCNT              &mmv MOVE_DOWN               &kp AMPS    &kp STAR    &kp LPAR    &kp RPAR    &kp PLUS   &kp EQUAL
+           &trans      &kp EXCL    &kp LBRC   &kp RBRC   &kp UNDER   &kp HASH               &mmv MOVE_LEFT               &kp DLLR    &kp MINUS   &kp SEMI    &kp COLON   &kp DQT    &kp APOS
+           &trans      &kp CARET   &kp LT     &kp GT     &kp TILDE   &kp BSLH               &mmv MOVE_RIGHT              &kp QMARK   &kp FSLH    &kp COMMA   &kp DOT     &kp PIPE   &trans
+&trans                             &trans     &trans     &trans      &trans      &trans     &mkp LCLK           &trans   &trans      &trans      &trans      &trans
             >;
             label = "SYMBOL";
             sensor-bindings = <&scroll_encoder>;
@@ -415,11 +410,11 @@ mouse_slow: mouse_slow {
         // Number/Function layer
         number_layer {
             bindings = <
-           -------     &kp F1      &kp F2      &kp F3      &kp F4     &kp F5                -------               &kp F6      &kp F7     &kp F8     &kp F9     &kp F10    &kp F11
-           &kp GRAVE   &kp N1      &kp N2      &kp N3      &kp N4     &kp N5                -------               &kp N6      &kp N7     &kp N8     &kp N9     &kp N0     &kp F12
-           -------     &mkp LCLK   &mkp MCLK   &mkp RCLK   &mkp MB4   &mkp MB5              -------               &kp CARET   &kp AMPS   &kp STAR   &kp LPAR   &kp RPAR   &kp MINUS
-           -------     -------     -------     -------     -------    -------               -------               -------     -------    -------    -------    -------    -------
--------                            -------     -------     -------    -------     -------   -------     -------   -------     -------    -------    -------
+           &trans      &kp F1      &kp F2      &kp F3      &kp F4     &kp F5                &trans              &kp F6      &kp F7     &kp F8     &kp F9     &kp F10    &kp F11
+           &kp GRAVE   &kp N1      &kp N2      &kp N3      &kp N4     &kp N5                &trans              &kp N6      &kp N7     &kp N8     &kp N9     &kp N0     &kp F12
+           &trans      &mkp LCLK   &mkp MCLK   &mkp RCLK   &mkp MB4   &mkp MB5              &trans              &kp CARET   &kp AMPS   &kp STAR   &kp LPAR   &kp RPAR   &kp MINUS
+           &trans      &trans      &trans      &trans      &trans     &trans                &trans              &trans      &trans     &trans     &trans     &trans     &trans
+&trans                             &trans      &trans      &trans     &trans     &trans     &trans     &trans   &trans      &trans     &trans     &trans
             >;
             label = "NUMBER";
             <&inc_dec_kp C_VOL_UP C_VOL_DN>;
@@ -428,11 +423,11 @@ mouse_slow: mouse_slow {
         // Navigation layer with mouse support
         navigation_layer {
             bindings = <
-           -------   -------     -------     -------     -------      -------                 -------               -------     -------    -------    -------      -------   -------
-           -------   -------     -------     -------     -------      -------                 -------               &kp PG_UP   &kp HOME   &kp UP     &kp END      -------   -------
-           -------   &kp LSHFT   &kp LCTRL   &kp LALT    &kp LGUI     -------                 -------               &kp PG_DN   &kp LEFT   &kp DOWN   &kp RIGHT    -------   -------
-           -------   &mkp MB4    &mkp MB5    &mkp LCLK   &mkp MCLK    &mkp RCLK               -------               -------     &kp BSPC   &kp DEL    &kp INSERT   -------   -------
--------                          -------     -------     -------      -------     -------     -------     -------   -------     -------    -------    -------
+           &trans   &trans      &trans      &trans      &trans      &trans                 &trans              &trans      &trans     &trans     &trans       &trans   &trans
+           &trans   &trans      &trans      &trans      &trans      &trans                 &trans              &kp PG_UP   &kp HOME   &kp UP     &kp END      &trans   &trans
+           &trans   &kp LSHFT   &kp LCTRL   &kp LALT    &kp LGUI    &trans                 &trans              &kp PG_DN   &kp LEFT   &kp DOWN   &kp RIGHT    &trans   &trans
+           &trans   &mkp MB4    &mkp MB5    &mkp LCLK   &mkp MCLK   &mkp RCLK              &trans              &trans      &kp BSPC   &kp DEL    &kp INSERT   &trans   &trans
+&trans                          &trans      &trans      &trans      &trans      &trans     &trans     &trans   &trans      &trans     &trans     &trans
             >;
             label = "NAV";
             sensor-bindings = <&scroll_encoder>;
@@ -454,26 +449,26 @@ mouse_slow: mouse_slow {
         // Adjust layer for keyboard settings
         adjust_layer {
             bindings = <
-           &sys_reset        &bootloader      -------           -------           -------           &soft_off                     -------               &to BASE          &to PC            -------           &bootloader       &sys_reset        -------
-           &bt BT_CLR        &bt BT_SEL 0     &bt BT_SEL 1      &bt BT_SEL 2      &bt BT_SEL 3      &bt BT_SEL 4                  -------               -------           -------           -------           -------           -------           &bt BT_CLR_ALL
-           -------           &out OUT_USB     &out OUT_BLE      &out OUT_TOG      -------           -------                       -------               -------           -------           -------           -------           -------           -------
-           &rgb_ug RGB_OFF   &rgb_ug RGB_ON   &rgb_ug RGB_EFF   &rgb_ug RGB_EFR   &rgb_ug RGB_BRI   &rgb_ug RGB_BRD               -------               &rgb_ug RGB_SPI   &rgb_ug RGB_SPD   &rgb_ug RGB_HUI   &rgb_ug RGB_HUD   &rgb_ug RGB_SAI   &rgb_ug RGB_SAD
--------                                       -------           -------           -------           -------           -------     -------     -------   -------           -------           -------           -------
+           &sys_reset        &bootloader      &trans            &trans            &trans            &soft_off                    &trans              &to BASE          &to PC            &trans            &bootloader       &sys_reset        &trans
+           &bt BT_CLR        &bt BT_SEL 0     &bt BT_SEL 1      &bt BT_SEL 2      &bt BT_SEL 3      &bt BT_SEL 4                 &trans              &trans            &trans            &trans            &trans            &trans            &bt BT_CLR_ALL
+           &trans            &out OUT_USB     &out OUT_BLE      &out OUT_TOG      &trans            &trans                       &trans              &trans            &trans            &trans            &trans            &trans            &trans
+           &rgb_ug RGB_OFF   &rgb_ug RGB_ON   &rgb_ug RGB_EFF   &rgb_ug RGB_EFR   &rgb_ug RGB_BRI   &rgb_ug RGB_BRD              &trans              &rgb_ug RGB_SPI   &rgb_ug RGB_SPD   &rgb_ug RGB_HUI   &rgb_ug RGB_HUD   &rgb_ug RGB_SAI   &rgb_ug RGB_SAD
+&trans                                        &trans            &trans            &trans            &trans            &trans     &trans     &trans   &trans            &trans            &trans            &trans
             >;
             label = "ADJUST";
             sensor-bindings = <&rgb_encoder>;
         };
     };
 
-    conditional_layers {
-        compatible = "zmk,conditional-layers";
-        mac_mods {
-            if-layers = <BT_SEL 0>;  // Profile 0 for Mac
-            then-layer = <BASE>;
-        };
-        pc_mods {
-            if-layers = <BT_SEL 1>;  // Profile 1 for PC
-            then-layer = <PC>;
-        };
-    };
+    //conditional_layers {
+    //    compatible = "zmk,conditional-layers";
+    //    mac_mods {
+    //        if-layers = <BT_SEL 0>;  // Profile 0 for Mac
+    //        then-layer = <BASE>;
+    //    };
+    //    pc_mods {
+    //        if-layers = <BT_SEL 1>;  // Profile 1 for PC
+    //        then-layer = <PC>;
+    //    };
+    //};
 };
