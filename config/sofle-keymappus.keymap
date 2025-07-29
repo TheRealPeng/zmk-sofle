@@ -459,16 +459,4 @@
             sensor-bindings = <&rgb_encoder>;
         };
     };
-
-    //conditional_layers {
-    //    compatible = "zmk,conditional-layers";
-    //    mac_mods {
-    //        if-layers = <BT_SEL 0>;  // Profile 0 for Mac
-    //        then-layer = <BASE>;
-    //    };
-    //    pc_mods {
-    //        if-layers = <BT_SEL 1>;  // Profile 1 for PC
-    //        then-layer = <PC>;
-    //    };
-    //};
 };

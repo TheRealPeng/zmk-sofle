@@ -17,7 +17,6 @@
     codes = <INPUT_REL_WHEEL INPUT_REL_HWHEEL>;
     track-remainders;
   };
-};
 
 &mmv_input_listener {
        input-processors = <&zip_xy_scaler 2 1>;
@@ -39,7 +38,7 @@
 };
 
 
-/ {
+{
 
     hm: homerow_mods {
         compatible = "zmk,behavior-hold-tap";
