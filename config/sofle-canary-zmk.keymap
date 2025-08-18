@@ -19,9 +19,6 @@
 #include <dt-bindings/zmk/rgb.h>
 #include <zephyr/dt-bindings/input/input-event-codes.h>
 
-#define ZMK_POINTING_DEFAULT_MOVE_VAL 1200  // 600
-#define ZMK_POINTING_DEFAULT_SCRL_VAL 35    // 10
-
 // Layer definitions
 #define BASE 0
 #define SYM  1
@@ -41,6 +38,13 @@
 #define HRM_O &hmr RSHFT O
 
 / {
+    zip_xy_scaler: zip_xy_scaler {
+    compatible = "zmk,input-processor-scaler";
+    #input-processor-cells = <2>;
+    type = <INPUT_EV_REL>;
+    codes = <INPUT_REL_X INPUT_REL_Y>;
+    track-remainders;
+};
     behaviors {
         // Timeless home row mods - left hand
         hml: home_row_mod_left {
@@ -158,7 +162,7 @@
             bindings = <&kp RALT>, <&kp S>;
         };
     };
-    
+
     keymap {
         compatible = "zmk,keymap";
         
@@ -198,6 +202,7 @@
                       &trans   &trans   &trans               &trans   &trans   &trans
 //                            ╰────────┴────────┴────────╯   ╰────────┴────────┴────────╯
             >;
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
         
         // Number/Function layer
@@ -216,6 +221,7 @@
                       &trans   &trans   &trans               &trans   &trans   &trans
 //                            ╰────────┴────────┴────────╯   ╰────────┴────────┴────────╯
             >;
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
         
         // Navigation layer
@@ -234,6 +240,7 @@
                       &trans   &trans   &trans               &trans   &trans   &trans
 //                            ╰────────┴────────┴────────╯   ╰────────┴────────┴────────╯
             >;
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
         
         // QWERTY layer for Chinese pinyin input
@@ -252,6 +259,7 @@
                       &kp LGUI &kp ESC  &kp SPACE            &kp ENTER &kp BSPC &tog QWER
 //                            ╰────────┴────────┴────────╯   ╰────────┴────────┴────────╯
             >;
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
         
         // Adjust layer for keyboard settings
@@ -270,6 +278,7 @@
                       &trans   &trans   &trans               &trans   &trans   &trans
 //                            ╰────────┴────────┴────────╯   ╰────────┴────────┴────────╯
             >;
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
     };
 };
