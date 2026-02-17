@@ -30,5 +30,5 @@ include:
     artifact-name: eyelash_sofle_right_keymappus
 
   # Settings reset (no keymap needed)
-  - board: eyelash_sofle_left
+  - board: nice_nano_v2
     shield: settings_reset
