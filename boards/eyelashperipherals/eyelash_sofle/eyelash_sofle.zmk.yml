@@ -11,5 +11,5 @@ outputs:
   - usb
   - ble
 siblings:
-  - nrf52840/left
-  - nrf52840/right
+  - nrf52840_qiaa/left
+  - nrf52840_qiaa/right
