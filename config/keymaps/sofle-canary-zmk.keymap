@@ -160,7 +160,7 @@
 
         // Base layer - Canary layout with home row mods
         base_layer {
-            label = "CANARY";
+            display-name = "CANARY";
             bindings = <
 // ╭────────┬────────┬────────┬────────┬────────┬────────╮   ╭────────┬────────┬────────┬────────┬────────┬────────╮
     &kp ESC  &kp N1   &kp N2   &kp N3   &kp N4   &kp N5       &kp N6   &kp N7   &kp N8   &kp N9   &kp N0   &kp BSPC
@@ -180,7 +180,7 @@
 
         // Symbol layer - optimized for Java programming
         symbol_layer {
-            label = "SYMBOL";
+            display-name = "SYMBOL";
             bindings = <
 // ╭────────┬────────┬────────┬────────┬────────┬────────╮   ╭────────┬────────┬────────┬────────┬────────┬────────╮
     &trans   &trans   &trans   &trans   &trans   &trans       &trans   &trans   &trans   &trans   &trans   &trans
@@ -199,7 +199,7 @@
 
         // Number/Function layer
         number_layer {
-            label = "NUMBER";
+            display-name = "NUMBER";
             bindings = <
 // ╭────────┬────────┬────────┬────────┬────────┬────────╮   ╭────────┬────────┬────────┬────────┬────────┬────────╮
     &trans   &kp F1   &kp F2   &kp F3   &kp F4   &kp F5       &kp F6   &kp F7   &kp F8   &kp F9   &kp F10  &kp F11
@@ -218,7 +218,7 @@
 
         // Navigation layer
         navigation_layer {
-            label = "NAV";
+            display-name = "NAV";
             bindings = <
 // ╭────────┬────────┬────────┬────────┬────────┬────────╮   ╭────────┬────────┬────────┬────────┬────────┬────────╮
     &trans   &trans   &trans   &trans   &trans   &trans       &trans   &trans   &trans   &trans   &trans   &trans
@@ -237,7 +237,7 @@
 
         // QWERTY layer for Chinese pinyin input
         qwerty_layer {
-            label = "QWERTY";
+            display-name = "QWERTY";
             bindings = <
 // ╭────────┬────────┬────────┬────────┬────────┬────────╮   ╭────────┬────────┬────────┬────────┬────────┬────────╮
     &kp ESC  &kp N1   &kp N2   &kp N3   &kp N4   &kp N5       &kp N6   &kp N7   &kp N8   &kp N9   &kp N0   &kp BSPC
@@ -256,7 +256,7 @@
 
         // Adjust layer for keyboard settings
         adjust_layer {
-            label = "ADJUST";
+            display-name = "ADJUST";
             bindings = <
 // ╭────────┬────────┬────────┬────────┬────────┬────────╮   ╭────────┬────────┬────────┬────────┬────────┬────────╮
     &sys_reset &bootloader &trans &trans &trans &trans       &trans   &trans   &trans   &trans   &bootloader &sys_reset

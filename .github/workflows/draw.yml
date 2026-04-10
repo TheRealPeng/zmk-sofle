@@ -3,9 +3,9 @@ on:
   workflow_dispatch:
   push:
     paths:
-      - "zmk-sofle/config/keymaps/**"
-      - "zmk-sofle/.github/workflows/draw.yml"
-      - "zmk-sofle/keymap_drawer.config.yaml"
+      - "config/keymaps/**"
+      - ".github/workflows/draw.yml"
+      - "keymap_drawer.config.yaml"
 
 jobs:
   draw:
@@ -14,9 +14,9 @@ jobs:
       contents: write
     with:
       install_dependencies: true
-      config_path: "zmk-sofle/keymap_drawer.config.yaml"
-      keymap_patterns: "zmk-sofle/config/keymaps/*.keymap"
-      output_folder: "zmk-sofle/keymap-drawer"
+      config_path: "keymap_drawer.config.yaml"
+      keymap_patterns: "config/keymaps/*.keymap"
+      output_folder: "keymap-drawer"
       commit_message: "[Draw] ${{ github.event.head_commit.message }}"
       destination: "commit"
       fail_on_error: ${{ fromJSON(true) }}
