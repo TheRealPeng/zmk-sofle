@@ -13,7 +13,6 @@ jobs:
     permissions:
       contents: write
     with:
-      install_dependencies: true
       config_path: "keymap_drawer.config.yaml"
       keymap_patterns: "config/keymaps/*.keymap"
       output_folder: "keymap-drawer"
