@@ -110,6 +110,8 @@ draw_config:
   use_local_cache: true
 
 parse_config:
+  layout:
+    zmk_keyboard: eyelash_sofle
   mark_alternate_layer_activators: true
   sticky_label: $$mdi:gesture-tap-hold$$
   trans_legend:
@@ -318,10 +320,10 @@ parse_config:
     SQT:
       tap: "'"
       shifted: '"'
-    APOSTROPHE: 
+    APOSTROPHE:
       tap: "'"
       shifted: '"'
-    APOS: 
+    APOS:
       tap: "'"
       shifted: '"'
     DOUBLE_QUOTES: '"'
@@ -492,7 +494,7 @@ parse_config:
     C_AL_LOCK: $$mdi:lock$$
     K_CANCEL: $$mdi:close-box$$
     K_FIND: $$mdi:apple-finder$$
-    # Command + 
+    # Command +
     LG(A):
       tap: 'A'
       hold: $$mdi:apple-keyboard-command$$
