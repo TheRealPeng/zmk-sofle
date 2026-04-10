@@ -2,31 +2,31 @@ include:
 
   - board: eyelash_sofle/nrf52840/left
     shield: nice_view
-    cmake-args: -DDTC_OVERLAY_FILE="${base_dir}/config/keymaps/eyelash_sofle.keymap"
+    cmake-args: -DKEYMAP_FILE="${base_dir}/config/keymaps/eyelash_sofle.keymap"
     artifact-name: eyelash_sofle_left_qwerty
   - board: eyelash_sofle/nrf52840/right
     shield: nice_view
-    cmake-args: -DDTC_OVERLAY_FILE="${base_dir}/config/keymaps/eyelash_sofle.keymap"
+    cmake-args: -DKEYMAP_FILE="${base_dir}/config/keymaps/eyelash_sofle.keymap"
     artifact-name: eyelash_sofle_right_qwerty
 
   # --- Canary ---
   - board: eyelash_sofle/nrf52840/left
     shield: nice_view
-    cmake-args: -DDTC_OVERLAY_FILE="${base_dir}/config/keymaps/sofle-canary-zmk.keymap"
+    cmake-args: -DKEYMAP_FILE="${base_dir}/config/keymaps/sofle-canary-zmk.keymap"
     artifact-name: eyelash_sofle_left_canary
   - board: eyelash_sofle/nrf52840/right
     shield: nice_view
-    cmake-args: -DDTC_OVERLAY_FILE="${base_dir}/config/keymaps/sofle-canary-zmk.keymap"
+    cmake-args: -DKEYMAP_FILE="${base_dir}/config/keymaps/sofle-canary-zmk.keymap"
     artifact-name: eyelash_sofle_right_canary
 
   # --- Keymappus ---
   - board: eyelash_sofle/nrf52840/left
     shield: nice_view
-    cmake-args: -DDTC_OVERLAY_FILE="${base_dir}/config/keymaps/sofle-keymappus.keymap"
+    cmake-args: -DKEYMAP_FILE="${base_dir}/config/keymaps/sofle-keymappus.keymap"
     artifact-name: eyelash_sofle_left_keymappus
   - board: eyelash_sofle/nrf52840/right
     shield: nice_view
-    cmake-args: -DDTC_OVERLAY_FILE="${base_dir}/config/keymaps/sofle-keymappus.keymap"
+    cmake-args: -DKEYMAP_FILE="${base_dir}/config/keymaps/sofle-keymappus.keymap"
     artifact-name: eyelash_sofle_right_keymappus
 
   # Settings reset (no keymap needed)

@@ -16,6 +16,7 @@ jobs:
       config_path: "keymap_drawer.config.yaml"
       keymap_patterns: "config/keymaps/*.keymap"
       output_folder: "keymap-drawer"
+      draw_args: "sofle-canary-zmk:'-d boards/eyelashperipherals/eyelash_sofle/eyelash_sofle-layouts.dtsi' sofle-keymappus:'-d boards/eyelashperipherals/eyelash_sofle/eyelash_sofle-layouts.dtsi'"
       commit_message: "[Draw] ${{ github.event.head_commit.message }}"
       destination: "commit"
       fail_on_error: ${{ fromJSON(true) }}
