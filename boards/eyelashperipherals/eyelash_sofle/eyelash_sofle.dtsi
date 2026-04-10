@@ -228,9 +228,15 @@ zephyr_udc0: &usbd {
     status = "okay";
 };
 
-/* Enable DC/DC converter to reduce power consumption */
+/* Enable DC/DC converter for main supply; clear the property from the HV regulator
+ * node because nordic,nrf52x-regulator-hv does not allow regulator-initial-mode
+ * even though Zephyr's nRF52840 SoC DTS sets it by default. */
 &reg0 {
     regulator-initial-mode = <NRF5X_REG_MODE_DCDC>;
+};
+
+&reg1 {
+    /delete-property/ regulator-initial-mode;
 };
 
 nice_view_spi: &spi0 {
